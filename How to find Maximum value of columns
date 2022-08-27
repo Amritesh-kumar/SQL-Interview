@@ -1,0 +1,18 @@
+
+--How to find Maximum value of columns
+
+--Create table #temp (Category varchar(100), year1 int, year2 int, year3 int, year4 int)
+
+--insert into #temp
+--select 'car1' , 1000, 200, 400, 300
+--union
+--select 'bike' , 500, 700, 900, 300
+
+Select * from #temp
+
+select Category,
+(
+  SELECT MAX(myval) 
+  FROM (VALUES (year1),(year2),(year4)) AS temp(myval)
+) AS MaxOfColumns
+from #temp
