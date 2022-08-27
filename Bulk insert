@@ -1,0 +1,14 @@
+--Create table demo (id int,name varchar(100))
+
+
+Bulk insert demo
+from  'D:\SQL\test2.csv'
+with (firstrow = 2,
+fieldterminator = ',',
+rowterminator = '\n',
+batchsize = 10,
+maxerrors = 2);
+
+select * from demo
+
+--delete from demo
