@@ -1,0 +1,16 @@
+--create table #temp_transaction (accountnumber int, transactiontime datetime, transactionamount int, balance int)
+
+
+--insert into #temp_transaction values (1, getdate(), 200, 1300) 
+--insert into #temp_transaction values (2, getdate(), 500, 1700) 
+--insert into #temp_transaction values (3, getdate(), 500, 2200) 
+--insert into #temp_transaction values (4, getdate(), 250, 1220) 
+--insert into #temp_transaction values (1, getdate(), 300, 1000) 
+--insert into #temp_transaction values (2, getdate(), 100, 1600) 
+--insert into #temp_transaction values (4, getdate(), 200, 1020) 
+
+select a.accountnumber, a.transactionamount, a.balance,b.transactiontime from #temp_transaction a
+join (
+select accountnumber,max(transactiontime) as transactiontime from #temp_transaction 
+group by accountnumber) b
+on a.transactiontime = b. transactiontime and a.accountnumber = b.accountnumber
