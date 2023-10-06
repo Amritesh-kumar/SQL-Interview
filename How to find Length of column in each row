@@ -1,0 +1,2 @@
+select Name,DATALENGTH(Name) as LengthofName,ProductNumber, DATALENGTH(ProductNumber) as LengthofProductNumber 
+from Product;
